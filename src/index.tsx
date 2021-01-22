@@ -22,7 +22,7 @@ export const MathJaxProvider: React.FC<ContextProps> = ({
   children = null,
 }) => {
   const ref = useRef<HTMLElement | null>(null);
-  const [mathJax, setMathJax] = useState(window.MathJax || options);
+  const [mathJax, setMathJax] = useState(options);
 
   useEffect(() => {
     const existingScript = document.getElementById("mathjax-script");
