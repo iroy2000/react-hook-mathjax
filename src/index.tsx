@@ -21,8 +21,12 @@ export const MathJaxProvider: React.FC<ContextProps> = ({
   options = {},
   children = null,
 }) => {
+  if (typeof window === "undefined") {
+    return <></>;
+  }
+
   const ref = useRef<HTMLElement | null>(null);
-  const [mathJax, setMathJax] = useState(options);
+  const [mathJax, setMathJax] = useState(window.MathJax || options);
 
   useEffect(() => {
     const existingScript = document.getElementById("mathjax-script");
